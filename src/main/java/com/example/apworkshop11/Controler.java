@@ -159,11 +159,41 @@ public class Controler {
     }
     @FXML
     public void equals(ActionEvent actionEvent){
-
+        String[] parts = stringToCalculate.toString().split("[+]|-|[*]|/");
+        double operator1 = Double.parseDouble(parts[0]);
+        double operator2 = Double.parseDouble(parts[1]);
+        double answer = 0;
+        if(stringToCalculate.toString().contains("+")){
+            answer = operator1+operator2;
+        }else if(stringToCalculate.toString().contains("-")){
+            answer = operator1-operator2;
+        } else if (stringToCalculate.toString().contains("*")) {
+            answer = operator1*operator2;
+        } else if(stringToCalculate.toString().contains("/")){
+            answer = operator1/operator2;
+        }
+        stringToCalculate.delete(0,stringToCalculate.length());
+        stringToCalculate.append(Double.toString(answer));
+        textField.setText(stringToCalculate.toString());
     }
     @FXML
     public void equals(){
-
+        String[] parts = stringToCalculate.toString().split("[+]|-|[*]|/");
+        double operator1 = Double.parseDouble(parts[0]);
+        double operator2 = Double.parseDouble(parts[1]);
+        double answer = 0;
+        if(stringToCalculate.toString().contains("+")){
+            answer = operator1+operator2;
+        }else if(stringToCalculate.toString().contains("-")){
+            answer = operator1-operator2;
+        } else if (stringToCalculate.toString().contains("*")) {
+            answer = operator1*operator2;
+        } else if(stringToCalculate.toString().contains("/")){
+            answer = operator1/operator2;
+        }
+        stringToCalculate.delete(0,stringToCalculate.length());
+        stringToCalculate.append(Double.toString(answer));
+        textField.setText(stringToCalculate.toString());
     }
     @FXML
     public void ac(ActionEvent actionEvent){
