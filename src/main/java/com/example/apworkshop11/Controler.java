@@ -3,6 +3,7 @@ package com.example.apworkshop11;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Font;
 
 public class Controler {
     private static StringBuilder stringToCalculate = new StringBuilder();
@@ -201,11 +202,18 @@ public class Controler {
         } else if (stringToCalculate.toString().contains("*")) {
             answer = operator1 * operator2;
         } else if (stringToCalculate.toString().contains("/")) {
-            answer = operator1 / operator2;
+                answer = operator1 / operator2;
         }
-        stringToCalculate.delete(0, stringToCalculate.length());
-        stringToCalculate.append(Double.toString(answer));
+        if(stringToCalculate.toString().contains("/")&&operator2==0){
+            stringToCalculate.delete(0,stringToCalculate.length());
+            stringToCalculate.append("Can't divide by zero");
+            textField.setFont(Font.font("System",15));
+        }else {
+            stringToCalculate.delete(0, stringToCalculate.length());
+            stringToCalculate.append(Double.toString(answer));
+        }
         textField.setText(stringToCalculate.toString());
+
     }
 
     @FXML
@@ -230,6 +238,7 @@ public class Controler {
 
     @FXML
     public void ac(ActionEvent actionEvent) {
+        textField.setFont(Font.font("System",31));
         stringToCalculate.delete(0, stringToCalculate.length());
         textField.setText(stringToCalculate.toString());
     }
